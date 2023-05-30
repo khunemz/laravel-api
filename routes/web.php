@@ -39,7 +39,7 @@ Route::get('/setup', function () {
         if ($user instanceof \App\Models\User) {
             $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
             $updateToken  = $user->createToken('update-token', ['create', 'update']);
-            $basicToken = $user->creatToken('basic-token');
+            $basicToken = $user->createToken('basic-token');
             return [
                 'admin' => $adminToken->plainTextToken,
                 'update' => $updateToken->plainTextToken,
