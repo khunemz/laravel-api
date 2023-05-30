@@ -2,10 +2,10 @@
 
 namespace App\Filters\V1;
 
-use Illuminate\Http\Request;
 use App\Filters\ApiFilter;
 
-class CustomersFilter extends ApiFilter {
+class CustomersFilter extends ApiFilter
+{
     protected $safeParms = [
         'name' => ['eq'],
         'type' => ['eq'],

@@ -11,3 +11,7 @@ php artisan migrate:fresh --seed
 ```bash
 php artisan make:resource V1\CustomerResource
 ```
+#### Class not found
+```bash
+composer dump-autoload -o
+```
