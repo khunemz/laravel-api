@@ -25,3 +25,9 @@ php artisan make:request StoreCustomerRequest
 # clear cache route
 php artisan route:clear
 ```
+
+```bash
+# Sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+```
