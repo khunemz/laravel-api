@@ -20,3 +20,8 @@ composer dump-autoload -o
 ```bash
 php artisan make:request StoreCustomerRequest
 ```
+
+```bash
+# clear cache route
+php artisan route:clear
+```

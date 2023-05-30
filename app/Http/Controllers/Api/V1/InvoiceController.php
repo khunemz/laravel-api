@@ -10,6 +10,7 @@ use App\Http\Resources\V1\InvoiceCollection;
 use App\Http\Resources\V1\InvoiceResource;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class InvoiceController extends Controller
 {
@@ -50,6 +51,20 @@ class InvoiceController extends Controller
     public function store(StoreInvoiceRequest $request)
     {
         //
+    }
+
+    public function BulkStore(Request $request)
+    {
+        $data = [];
+        foreach ($request->all() as $obj) {
+            $d['customer_id'] = $obj['customerId'] ?? null;
+            $d['amount'] = $obj['amount'] ?? null;
+            $d['status'] = $obj['status'] ?? null;
+            $d['billed_date'] = $obj['billedDate'] ?? null;
+            $d['paid_date'] = $obj['paidDate'] ?? null;
+            array_push($data, $d);
+        }
+        Invoice::insert($data);
     }
 
     /**
