@@ -11,7 +11,9 @@ class UpdateCustomerRequest extends StoreCustomerRequest
 {
     public function authorize()
     {
-        return true;
+        $user = $this->user();
+
+        return $user != null && $user->tokenCan('customer:update');
     }
 
     public function rules()
