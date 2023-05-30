@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class StoreCustomerRequest extends FormRequest
 {
@@ -29,5 +31,10 @@ class StoreCustomerRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge(['postal_code' => $this->postalCode,]);
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new ValidationException($validator, response()->json($validator->errors(), 422));
     }
 }
