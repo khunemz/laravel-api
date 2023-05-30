@@ -15,3 +15,8 @@ php artisan make:resource V1\CustomerResource
 ```bash
 composer dump-autoload -o
 ```
+
+
+```bash
+php artisan make:request StoreCustomerRequest
+```
