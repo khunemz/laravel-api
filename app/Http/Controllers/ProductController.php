@@ -13,9 +13,9 @@ class ProductController extends Controller
     {
         try {
             $products = Product::all();
-            return response()->json($products, 200);
+            return response($products, 200);
         } catch (\Throwable $th) {
-            return response()->json($th, 500);
+            return response($th, 500);
         }
     }
 
@@ -24,11 +24,11 @@ class ProductController extends Controller
         try {
             $product = Product::find($id);
             if(!isset($product)) {
-                return response()->json($product, 404);
+                return response($product, 404);
             }
-            return response()->json($product, 200);
+            return response($product, 200);
         } catch (\Throwable $th) {
-            return response()->json($th, 500);
+            return response($th, 500);
         }
     }
 
@@ -42,9 +42,9 @@ class ProductController extends Controller
                 'category' => 'required|max:255',
             ]);
             $product = Product::create($validate);
-            return response()->json($product, 201);
+            return response($product, 201);
         } catch (\Throwable $th) {
-            return response()->json($th, 500);
+            return response($th, 500);
         }
     }
 
@@ -53,7 +53,7 @@ class ProductController extends Controller
         try {
             $product = Product::find($request->id);
             if(!isset($product)) {
-                return response()->json($product, 404);
+                return response($product, 404);
             }
             $validate = $request->validate([
                 'id' => 'required|numeric',
@@ -63,9 +63,9 @@ class ProductController extends Controller
                 'category' => 'required|max:255',
             ]);
             $product->update($validate);
-            return response()->json($product, 200);
+            return response($product, 200);
         } catch (\Throwable $th) {
-            return response()->json($th, 500);
+            return response($th, 500);
         }
     }
 
@@ -75,12 +75,12 @@ class ProductController extends Controller
         try {
             $existing_product = Product::find($product->id);
             if(!$existing_product) {
-                return response()->json($existing_product, 404);
+                return response($existing_product, 404);
             }
             $product->destroy('id', $product->id);
-            return response()->json(null, 200);
+            return response(null, 200);
         } catch (\Throwable $th) {
-            return response()->json($th, 500);
+            return response($th, 500);
         }
     }
 }
