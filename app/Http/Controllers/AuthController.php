@@ -45,8 +45,7 @@ class AuthController extends Controller
         if (! $user || ! Hash::check($fields['password'], $user->password)) {
             return response([
                 'message' => 'The provided credentials are incorrect.',
-                401
-            ]);
+            ], 401);
         }
 
         $token = $user->createToken(env('APP_KEY'))->plainTextToken;
